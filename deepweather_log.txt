@@ -1,0 +1,6 @@
+Context
+==========
+USER: alex
+HOST NAME: blackssdbox
+LAST RUN: seg ago 17 17:37:28 -03 2020
+CONDA ENV: deepweather
