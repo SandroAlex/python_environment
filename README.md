@@ -2,115 +2,65 @@
 
 ## Overview
 
-Install my current conda python environment for data science in general and my phd studies.
+Install current conda environment for my data-science-PhD in atmospheric physics with python language.
 
 ## Basic environment
 
-This is how I make a basic and robust python installation for general purposes in data science (__please note that, due to my background, you can see a lot of packages for climate data analysis within my installation below__). First we need to make sure to have access to ```conda-forge``` channel. This can be done following one out of two possibilities:
+This is how I make a basic and robust python installation for dealing with data-driven research in climate science. First we need to make sure to have access to ```conda-forge``` channel. This can be done following one out of two possibilities:
 
-**1:** The following command adds the channel ```conda-forge``` to the top of the channel list, making it the highest priority:
-
+**1:** The following command adds the channel `conda-forge` to the top of the channel list, making it the highest priority:
 ```sh
 $ conda config --add channels conda-forge
 ```
-
-**2:** Conda also now has a command that adds the new channel ```conda-forge``` to the bottom of the channel list, making it the lowest priority:
-
+**2:** Conda also now has a command that adds the new channel `conda-forge` to the bottom of the channel list, making it the lowest priority:
 ```sh
 $ conda config --append channels conda-forge
 ```
 
-Then we can install all the basic packages when creating the environment named ```my_env``` with python 3.6 version:
-
+Then we can install all the basic packages when creating the environment named `my_env` with python 3.7 version:
 ```sh
-$ conda create --name my_env --verbose python=3.6 xarray jupyterlab statsmodels cartopy \
-cmocean esmf iris progressbar2 pygrib scikit-learn basemap matplotlib qtconsole qtawesome \
-seaborn pandas spyder metpy cfgrib scipy sympy networkx jpype1 cython cftime rasterio zarr \
-pynio h5netcdf bottleneck netCDF4 pseudonetcdf aospy esmpy eofs numba python-cdo keras \
-tensorflow kaggle jedi geopandas ipywidgets nc-time-axis pydot pyarrow
+$ conda create --name my_env --verbose python=3.7 scipy pandas matplotlib seaborn \
+jupyterlab spyder ipywidgets qtconsole qtawesome progressbar2 statsmodels bottleneck \
+numba cython pyarrow scikit-learn tensorflow keras xarray geopandas basemap cartopy \
+eofs pygrib cfgrib netCDF4 h5netcdf pseudonetcdf zarr rasterio cmocean pydot xesmf \
+cftime nc-time-axis       
 ```
-
 After creating this environment, we activate it using his name ```my_env```:
-
 ```sh
 $ conda activate my_env
 ```
 and then we can install additional packages with pip:
-
 ```sh
-$ pip install cmipdata ecmwf-api-client pysplit sklearn-xarray xesmf mvd pylatex \
-jupyterlab_latex jupyterlab-git nbresuse gym atari-py seglearn h2o pymannkendall
+$ pip install ecmwf-api-client nbresuse seglearn h2o pymannkendall
 ```
 
 Let's see the purposes for some of the previously installed packages :
 
-| Package | Description |
+| Package page| Description |
 |:---|:---|
-| esmf | The Earth System Modeling Framework (ESMF) is software for building and coupling weather, climate, and related models. |
-| pygrib | Python module for reading/writing GRIB files. |
-| MetPy | Collection of tools for reading, visualizing and performing calculations with weather data. |
-| cfgrib | Python interface to map GRIB files to the NetCDF Common Data Model following the CF Convention using ecCodes. |
-| JPype1 | A Python to Java bridge. |
-| aospy | Automated gridded climate data analysis and management. |
-| jedi | An autocompletion tool for Python that can be used for text editors. | 
-| cmipdata | Processing tools for large ensembles of CMIP type netcdf data. |
-| ecmwf-api-client | Python client for ECMWF web services API. |
-| PySPLIT | HYSPLIT trajectory analysis, automation, and visualization. |
-| sklearn-xarray | xarray integration with sklearn. |
-| xesmf | Universal Regridder for Geospatial Data. |
-| mvd | Terminal Markdown Viewer. |
-| nbresuse | Simple Jupyter extension to show how much resources (RAM) your notebook is using. |
-| nc-time-axis | Support for cftime axis in matplotlib. |
-| gym | The OpenAI Gym: A toolkit for developing and comparing your reinforcement learning agents. |
-| atari-py | Python bindings to Atari games. |
-| pydot | Python interface to Graphviz's Dot. |
-| seglearn | A template for scikit-learn compatible packages (time series / sequences data). |
-| h2o | H2O, Fast Scalable Machine Learning, for python. | 
-| pymannkendall | A python package for non parametric Mann Kendall family of trend tests. |
-
-## Extensions for jupyter-lab
-
-Currently I am trying to use some extensions for improving jupyter-lab experience:
-
-```sh
-$ jupyter labextension list
-JupyterLab v1.0.5
-Known labextensions:
-   app dir: /home/alex/anaconda3/envs/machine36/share/jupyter/lab
-        @jupyter-widgets/jupyterlab-manager v1.0.2  enabled  OK
-        @jupyterlab/git v0.8.0  enabled  OK
-        @jupyterlab/github v1.0.1  enabled  OK
-        @jupyterlab/latex v1.0.0  enabled  OK
-        @jupyterlab/plotly-extension v1.0.0  enabled  OK
-        jupyterlab-drawio v0.6.0  enabled  OK
-        jupyterlab_bokeh v1.0.0  enabled  OK
-        nbdime-jupyterlab v1.0.0  enabled  OK
-```
-
-## Creating an environment from an environment.yml file
-
-```sh
-$ conda env create -f environment.yml
-```
-
-The first line of the ```yml``` file sets the new environment’s name. 
-
-## Building identical conda environments
-
-An explicit spec file (txt extension) is not usually cross platform, and therefore has a comment at the top such as ```platform: osx-64``` showing the platform where it was created. This platform is the one where this spec file is known to work. On other platforms, the packages specified might not be available or dependencies might be missing for some of the key packages already in the spec.
-
-To use the spec file to create an identical environment on the same machine or another machine:
-
-```sh
-$ conda create --name myenv --file spec-file.txt
-```
-
-To use the spec file to install its listed packages into an existing environment:
-
-```sh
-$ conda install --name myenv --file spec-file.txt
-```
-
-Conda does not check architecture or dependencies when installing from a spec file. To ensure that the packages work correctly, make sure that the file was created from a working environment, and use it on the same architecture, operating system and platform, such as linux-64 or osx-64.
+| [bottleneck](https://github.com/pydata/bottleneck) | Bottleneck is a collection of fast, NaN-aware NumPy array functions written in C. |
+| [numba](http://numba.pydata.org/) | Numba is an open source JIT compiler that translates a subset of Python and NumPy code into fast machine code. |
+| [pyarrow](https://arrow.apache.org/) | A cross-language development platform for in-memory analytics. |
+| [xarray](http://xarray.pydata.org/en/stable/) | xarray (formerly xray) is an open source project and Python package that makes working with labelled multi-dimensional arrays simple, efficient, and fun! |
+| [geopandas](https://geopandas.org/) | GeoPandas is an open source project to make working with geospatial data in python easier. |
+| [basemap](https://basemaptutorial.readthedocs.io/en/latest/) | Basemap is a great tool for creating maps using python in a simple way. |
+| [cartopy](https://scitools.org.uk/cartopy/docs/latest/) | Cartopy is a Python package designed for geospatial data processing in order to produce maps and other geospatial data analyses. |
+| [eofs](https://ajdawson.github.io/eofs/latest/) | eofs is a Python package for EOFs (empirical orthogonal functions) analysis of spatial-temporal data. |
+| [pygrib](https://github.com/jswhit/pygrib) | Python module for reading/writing GRIB files. |
+| [cfgrib](https://github.com/ecmwf/cfgrib) | Python interface to map GRIB files to the NetCDF Common Data Model following the CF Convention using ecCodes. |
+| [netCDF4](https://github.com/Unidata/netcdf4-python) | netcdf4-python is a Python interface to the netCDF C library. |
+| [h5netcdf](https://github.com/shoyer/h5netcdf) | A Python interface for the netCDF4 file-format that reads and writes local or remote HDF5 files directly via h5py or h5pyd, without relying on the Unidata netCDF library. |
+| [pseudonetcdf](https://github.com/barronh/pseudonetcdf) | PseudoNetCDF provides read, plot, and sometimes write capabilities for atmospheric science data formats. |
+| [zarr](https://zarr.readthedocs.io/en/stable/) | Zarr is a Python package providing an implementation of chunked, compressed, N-dimensional arrays. |
+| [rasterio](https://rasterio.readthedocs.io/en/latest/) | Geographic information systems use GeoTIFF and other formats to organize and store gridded raster datasets such as satellite imagery and terrain models. Rasterio reads and writes these formats and provides a Python API based on Numpy N-dimensional arrays and GeoJSON. |
+| [cmocean](https://github.com/matplotlib/cmocean) | Beautiful colormaps for oceanography. |
+| [pydot](https://github.com/pydot/pydot) | Python interface to Graphviz's Dot. |
+| [xesmf](https://xesmf.readthedocs.io/en/latest/) | Universal Regridder for Geospatial Data. |
+| [cftime](https://github.com/unidata/cftime) | Time-handling functionality from netcdf4-python. |
+| [ecmwf-api-client](https://github.com/ecmwf/ecmwf-api-client) | Python API to access ECMWF archive. |
+| [nbresuse](https://github.com/yuvipanda/nbresuse) | NB Resource Usage (NBResuse) is a small extension for Jupyter Notebooks that displays an indication of how much resources your current notebook server and its children (kernels, terminals, etc) are using. This is displayed in the main toolbar in the notebook itself, refreshing every 5s. |
+| [seglearn](https://github.com/dmbee/seglearn) | Seglearn is a python package for machine learning time series or sequences. |
+| [h2o](https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/intro.html#what-is-h2o) | This Python module provides access to the H2O JVM, as well as its extensions, objects, machine-learning algorithms, and modeling support capabilities, such as basic munging and feature generation. |
+| [pymannkendall](https://github.com/mmhs013/pymannkendall) | pyMannkendal is a pure Python implementation of non-parametric Mann-Kendall trend analysis, which bring together almost all types of Mann-Kendall Test. |
 
 See more in [Managing conda environments](https://conda.io/docs/user-guide/tasks/manage-environments.html#managing-environments).
