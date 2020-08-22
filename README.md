@@ -66,7 +66,10 @@ See more in [Managing conda environments](https://conda.io/docs/user-guide/tasks
 
 ## Jupyter lab extensions  
 
-In order to install JupyterLab extensions, you need to have [node.js](https://nodejs.org/en/) installed. Follow [this Ubuntu 18.04 tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04-pt) using PPA method in order to have more updated versions than the ones found in official Ubuntu repositories. After obtaining an updated version of nodejs, then we can install some useful extensions:
+In order to install JupyterLab extensions, you need to have [node.js](https://nodejs.org/en/) installed. Follow [this Ubuntu 18.04 tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04-pt) using PPA method to have more updated versions than the ones found in official Ubuntu repositories. After obtaining an updated version of nodejs, then we can install some useful extensions:
 
 - [jupyterlab-toc](https://github.com/jupyterlab/jupyterlab-toc): A Table of Contents extension for JupyterLab. This auto-generates a table of contents in the left area when you have a notebook or markdown document open. The entries are clickable, and scroll the document to the heading in question.
     - `$ (my_env) jupyter labextension install @jupyterlab/toc`
+
+- [jupyterlab-spellchecker](https://github.com/ijmbarr/jupyterlab_spellchecker): The JupyterLab extension is based on the spellchecker Jupyter Notebook extension and relies on Typo.js for the actual spell checking. Spellchecker suggestions are available from the context menu.
+    - `$ (my_env) jupyter labextension install @ijmbarr/jupyterlab_spellchecker` 
