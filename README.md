@@ -17,13 +17,12 @@ $ conda config --add channels conda-forge
 $ conda config --append channels conda-forge
 ```
 
-Then we can install all the basic packages when creating the environment named `my_env` with python 3.7 version:
+Then we can install all the basic packages when creating the environment named `my_env` with python 3.6 version:
 ```sh
-$ conda create --name my_env --verbose python=3.7 scipy pandas matplotlib seaborn \
-jupyterlab spyder ipywidgets qtconsole qtawesome progressbar2 statsmodels bottleneck \
-numba cython pyarrow scikit-learn tensorflow keras xarray geopandas basemap cartopy \
-eofs pygrib cfgrib netCDF4 h5netcdf pseudonetcdf zarr rasterio cmocean pydot xesmf \
-cftime nc-time-axis       
+$ conda create --name my_env --verbose python=3.6 scipy pandas matplotlib seaborn jupyterlab spyder ipywidgets \
+qtconsole qtawesome progressbar2 statsmodels bottleneck numba cython pyarrow scikit-learn tensorflow keras \
+xarray geopandas cartopy folium eofs pygrib cfgrib netCDF4 h5netcdf pseudonetcdf zarr rasterio cmocean pydot \
+xesmf cftime nc-time-axis
 ```
 After creating this environment, we activate it using his name ```my_env```:
 ```sh
@@ -31,7 +30,7 @@ $ conda activate my_env
 ```
 and then we can install additional packages with pip:
 ```sh
-$ pip install ecmwf-api-client nbresuse seglearn h2o pymannkendall
+$ (my_env) pip install ecmwf-api-client nbresuse seglearn h2o pymannkendall
 ```
 
 Let's see the purposes for some of the previously installed packages :
@@ -43,8 +42,8 @@ Let's see the purposes for some of the previously installed packages :
 | [pyarrow](https://arrow.apache.org/) | A cross-language development platform for in-memory analytics. |
 | [xarray](http://xarray.pydata.org/en/stable/) | xarray (formerly xray) is an open source project and Python package that makes working with labelled multi-dimensional arrays simple, efficient, and fun! |
 | [geopandas](https://geopandas.org/) | GeoPandas is an open source project to make working with geospatial data in python easier. |
-| [basemap](https://basemaptutorial.readthedocs.io/en/latest/) | Basemap is a great tool for creating maps using python in a simple way. |
 | [cartopy](https://scitools.org.uk/cartopy/docs/latest/) | Cartopy is a Python package designed for geospatial data processing in order to produce maps and other geospatial data analyses. |
+| [folium](https://python-visualization.github.io/folium/) | folium builds on the data wrangling strengths of the Python ecosystem and the mapping strengths of the leaflet.js library. Manipulate your data in Python, then visualize it in on a Leaflet map via folium. |
 | [eofs](https://ajdawson.github.io/eofs/latest/) | eofs is a Python package for EOFs (empirical orthogonal functions) analysis of spatial-temporal data. |
 | [pygrib](https://github.com/jswhit/pygrib) | Python module for reading/writing GRIB files. |
 | [cfgrib](https://github.com/ecmwf/cfgrib) | Python interface to map GRIB files to the NetCDF Common Data Model following the CF Convention using ecCodes. |
@@ -64,3 +63,10 @@ Let's see the purposes for some of the previously installed packages :
 | [pymannkendall](https://github.com/mmhs013/pymannkendall) | pyMannkendal is a pure Python implementation of non-parametric Mann-Kendall trend analysis, which bring together almost all types of Mann-Kendall Test. |
 
 See more in [Managing conda environments](https://conda.io/docs/user-guide/tasks/manage-environments.html#managing-environments).
+
+## Jupyter lab extensions  
+
+In order to install JupyterLab extensions, you need to have [node.js](https://nodejs.org/en/) installed. Follow [this Ubuntu 18.04 tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04-pt) using PPA method in order to have more updated versions than the ones found in official Ubuntu repositories. After obtaining an updated version of nodejs, then we can install some useful extensions:
+
+- [jupyterlab-toc](https://github.com/jupyterlab/jupyterlab-toc): A Table of Contents extension for JupyterLab. This auto-generates a table of contents in the left area when you have a notebook or markdown document open. The entries are clickable, and scroll the document to the heading in question.
+    - `$ (my_env) jupyter labextension install @jupyterlab/toc`
