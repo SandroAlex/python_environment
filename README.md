@@ -39,7 +39,7 @@ Let's see the purposes for some of the previously installed packages :
 
 | Package page| Description |
 |:---|:---|
-| [dask](https://dask.org/): | Dask provides advanced parallelism for analytics, enabling performance at scale for the tools you love. |
+| [dask](https://dask.org/) | Dask provides advanced parallelism for analytics, enabling performance at scale for the tools you love. |
 | [bottleneck](https://github.com/pydata/bottleneck) | Bottleneck is a collection of fast, NaN-aware NumPy array functions written in C. |
 | [numba](http://numba.pydata.org/) | Numba is an open source JIT compiler that translates a subset of Python and NumPy code into fast machine code. |
 | [pyarrow](https://arrow.apache.org/) | A cross-language development platform for in-memory analytics. |
