@@ -1,0 +1,43 @@
+name: deepweather
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - statsmodels
+  - qtawesome
+  - pyarrow
+  - progressbar2
+  - cartopy
+  - zarr
+  - eofs
+  - scipy
+  - folium
+  - cmocean
+  - rasterio
+  - cfgrib
+  - seaborn
+  - netcdf4
+  - bottleneck
+  - scikit-learn
+  - geopandas
+  - xesmf
+  - nc-time-axis
+  - spyder
+  - cftime
+  - pydot
+  - numba
+  - qtconsole
+  - xgboost
+  - cython
+  - pygrib
+  - pseudonetcdf
+  - dask
+  - xarray
+  - jupyterlab
+  - python=3.7
+  - matplotlib
+  - pandas
+  - h5netcdf
+  - ipywidgets
+  - tqdm
+prefix: /home/alexaraujo/anaconda3/envs/deepweather
