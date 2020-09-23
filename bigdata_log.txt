@@ -1,0 +1,6 @@
+Context
+==========
+USER: alex
+HOST NAME: randommachine
+LAST RUN: seg set 21 00:20:44 -03 2020
+CONDA ENV: bigdata
