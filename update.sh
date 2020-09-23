@@ -63,8 +63,13 @@ do
         # Export your active environment to a new file.
         conda env export > "${ENV}.yml"
 
-        # Exporting an environment file across platforms.
-        conda env export --from-history > "${ENV}_multi_platforms.yml"
+	# Exporting an environment with packages I have asked for.
+        conda env export --from-history > "${ENV}_basic.yml"
+	
+        # Exporting an environment explicitly.
+        conda list --explicit > "${ENV}_explicit.txt"
+
+	# Turn off.
         conda deactivate
 
         # Simple log file.

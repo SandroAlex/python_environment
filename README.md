@@ -2,7 +2,7 @@
 
 ## Overview
 
-Install current conda environment for my data-science-PhD in atmospheric physics with python language.
+Install current conda environment (`deepweather`) for my data-science-PhD in atmospheric physics with python language.
 
 ## Basic environment
 
@@ -17,12 +17,13 @@ $ conda config --add channels conda-forge
 $ conda config --append channels conda-forge
 ```
 
-Then we can install all the basic packages when creating the environment named `my_env` with python 3.6 version:
+Then we can install all the basic packages when creating the environment named `my_env` with python 3.7 version:
 ```sh
-$ conda create --name my_env --verbose python=3.6 scipy pandas matplotlib seaborn jupyterlab spyder ipywidgets \
-qtconsole qtawesome progressbar2 statsmodels bottleneck numba cython pyarrow scikit-learn tensorflow keras \
-xarray geopandas cartopy folium eofs pygrib cfgrib netCDF4 h5netcdf pseudonetcdf zarr rasterio cmocean pydot \
-xesmf cftime nc-time-axis
+$ conda create --name my_env --verbose python=3.7 scipy pandas matplotlib seaborn \
+jupyterlab spyder ipywidgets qtconsole qtawesome progressbar2 statsmodels dask \
+bottleneck numba cython pyarrow scikit-learn scikit-optimize xgboost xarray \
+geopandas cartopy folium eofs pygrib cfgrib netCDF4 h5netcdf pseudonetcdf zarr \
+rasterio cmocean pydot xesmf cftime nc-time-axis
 ```
 After creating this environment, we activate it using his name ```my_env```:
 ```sh
@@ -30,16 +31,19 @@ $ conda activate my_env
 ```
 and then we can install additional packages with pip:
 ```sh
-$ (my_env) pip install ecmwf-api-client nbresuse seglearn h2o pymannkendall
+$ (my_env) pip install --upgrade tensorflow ecmwf-api-client nbresuse seglearn \
+h2o pymannkendall dask_labextension
 ```
 
 Let's see the purposes for some of the previously installed packages :
 
 | Package page| Description |
 |:---|:---|
+| [dask](https://dask.org/): | Dask provides advanced parallelism for analytics, enabling performance at scale for the tools you love. |
 | [bottleneck](https://github.com/pydata/bottleneck) | Bottleneck is a collection of fast, NaN-aware NumPy array functions written in C. |
 | [numba](http://numba.pydata.org/) | Numba is an open source JIT compiler that translates a subset of Python and NumPy code into fast machine code. |
 | [pyarrow](https://arrow.apache.org/) | A cross-language development platform for in-memory analytics. |
+| [scikit-optimize](https://scikit-optimize.github.io/stable/index.html) | Sequential model-based optimization in Python. |
 | [xarray](http://xarray.pydata.org/en/stable/) | xarray (formerly xray) is an open source project and Python package that makes working with labelled multi-dimensional arrays simple, efficient, and fun! |
 | [geopandas](https://geopandas.org/) | GeoPandas is an open source project to make working with geospatial data in python easier. |
 | [cartopy](https://scitools.org.uk/cartopy/docs/latest/) | Cartopy is a Python package designed for geospatial data processing in order to produce maps and other geospatial data analyses. |
@@ -66,10 +70,14 @@ See more in [Managing conda environments](https://conda.io/docs/user-guide/tasks
 
 ## Jupyter lab extensions  
 
-In order to install JupyterLab extensions, you need to have [node.js](https://nodejs.org/en/) installed. Follow [this Ubuntu 18.04 tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04-pt) using PPA method to have more updated versions than the ones found in official Ubuntu repositories. After obtaining an updated version of nodejs, then we can install some useful extensions:
+In order to install JupyterLab extensions, you need to have [node.js](https://nodejs.org/en/) installed. Follow [this Ubuntu 18.04 tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04-pt) using PPA method to have more updated versions than the ones found in official Ubuntu repositories. After obtaining an updated version of nodejs, then we can install some useful extensions directly from the `Extension Manager` tab when we enable it. Also, we can explicitly install these extensions from command line, as exemplified below:
 
 - [jupyterlab-toc](https://github.com/jupyterlab/jupyterlab-toc): A Table of Contents extension for JupyterLab. This auto-generates a table of contents in the left area when you have a notebook or markdown document open. The entries are clickable, and scroll the document to the heading in question.
     - `$ (my_env) jupyter labextension install @jupyterlab/toc`
 
 - [jupyterlab-spellchecker](https://github.com/ijmbarr/jupyterlab_spellchecker): The JupyterLab extension is based on the spellchecker Jupyter Notebook extension and relies on Typo.js for the actual spell checking. Spellchecker suggestions are available from the context menu.
     - `$ (my_env) jupyter labextension install @ijmbarr/jupyterlab_spellchecker` 
+
+- [dask-labextension](https://github.com/dask/dask-labextension): This package provides a JupyterLab extension to manage Dask clusters, as well as embed Dask's dashboard plots directly into JupyterLab panes.
+    - `$ (my_env) jupyter labextension install dask-labextension`
+    - `$ (my_env) jupyter serverextension enable dask_labextension`
