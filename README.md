@@ -81,3 +81,26 @@ In order to install JupyterLab extensions, you need to have [node.js](https://no
 - [dask-labextension](https://github.com/dask/dask-labextension): This package provides a JupyterLab extension to manage Dask clusters, as well as embed Dask's dashboard plots directly into JupyterLab panes.
     - `$ (deepweather) jupyter labextension install dask-labextension`
     - `$ (deepweather) jupyter serverextension enable dask_labextension`
+
+## JupyterLab on cluster node (HPC)
+
+To run JupyterLab on a specific computing node, for instance `nxxx` in some `cluster` resource, first we need to login in this node by ssh and then activate our previously installed conda `environment`. Now we start a JupyterLab instance and forward traffic to a specific port, `8888` in the following snippet:
+```sh
+(environment) username@nxxx:~> jupyter-lab --port 8888 --no-browser
+```
+After that, we go to another local terminal and type the following command:
+```sh
+$ ssh -t -t username@cluster -L 8890:localhost:1234 ssh nxxx -L 1234:localhost:8888
+```
+Let's understand the above commands:
+
+- The first ssh starts a tunnel between our local machine and head node of `cluster`.
+- `-t -t` forces a tty on head node. This is required to tunnel data back to head node from node `nxxx`.
+- `-L 8890:localhost:1234` directs ssh to tunnel traffic from port `8890` on local machine to port `1234` on head node of remote server (the general form is `[local port]:[remote ip]:[remote port]`).
+- The second ssh starts a tunnel between head node and `nxxx` node.
+- `-L 1234:localhost:8888` directes ssh to tunnel traffic from port `1234` on head node to port `8888` of `nxxx` computing node.
+
+Finally, we can head on to our browser at `localhost:8890` where our JupyterLab instance resides. See more on the following tutorials:
+
+- [Remote Jupyter Lab: how to utilize Jupyter Lab to its fullest on a remote server](https://medium.com/spencerweekly/remote-jupyter-lab-how-to-utilize-jupyter-lab-to-its-fullest-on-a-remote-server-2a359159d2f6).
+- [Running Jupyter Lab on HPC](https://www.sichong.site/2020/02/07/running-jupyter-lab-on-hpc/).
