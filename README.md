@@ -23,7 +23,7 @@ $ conda create --name deepweather --verbose python=3.7 scipy pandas matplotlib s
 jupyterlab spyder ipywidgets qtconsole qtawesome progressbar2 statsmodels dask \
 bottleneck numba cython pyarrow scikit-learn scikit-optimize xgboost xarray \
 geopandas cartopy folium eofs pygrib cfgrib netCDF4 h5netcdf pseudonetcdf zarr \
-rasterio cmocean pydot xesmf cftime nc-time-axis
+rasterio cmocean pydot xesmf cftime nc-time-axis rioxarray
 ```
 After creating this environment, we activate it using his name ```deepweather```:
 ```sh
@@ -60,6 +60,7 @@ Let's see the purposes for some of the previously installed packages :
 | [pydot](https://github.com/pydot/pydot) | Python interface to Graphviz's Dot. |
 | [xesmf](https://xesmf.readthedocs.io/en/latest/) | Universal Regridder for Geospatial Data. |
 | [cftime](https://github.com/unidata/cftime) | Time-handling functionality from netcdf4-python. |
+| [rioxarray](https://github.com/corteva/rioxarray) | Geospatial xarray extension powered by rasterio. |
 | [ecmwf-api-client](https://github.com/ecmwf/ecmwf-api-client) | Python API to access ECMWF archive. |
 | [nbresuse](https://github.com/yuvipanda/nbresuse) | NB Resource Usage (NBResuse) is a small extension for Jupyter Notebooks that displays an indication of how much resources your current notebook server and its children (kernels, terminals, etc) are using. This is displayed in the main toolbar in the notebook itself, refreshing every 5s. |
 | [seglearn](https://github.com/dmbee/seglearn) | Seglearn is a python package for machine learning time series or sequences. |
