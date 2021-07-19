@@ -16,29 +16,48 @@ $ conda config --add channels conda-forge
 ```sh
 $ conda config --append channels conda-forge
 ```
-
-Then we can install all the basic packages when creating the environment named `deepweather` with python 3.7 version:
+Then we can install basic python packages when creating an environment named `deepweather` with python 3.7 version:
 ```sh
-$ conda create --name deepweather --verbose python=3.7 scipy pandas matplotlib seaborn \
-jupyterlab spyder ipywidgets qtconsole qtawesome progressbar2 statsmodels dask \
-bottleneck numba cython pyarrow scikit-learn scikit-optimize xgboost xarray \
-geopandas cartopy folium eofs pygrib cfgrib netCDF4 h5netcdf pseudonetcdf zarr \
-rasterio cmocean pydot xesmf cftime nc-time-axis rioxarray salem regionmask
+$ conda create --name deepweather --verbose python=3.7 
 ```
-After creating this environment, we activate it using his name ```deepweather```:
+After creating this environment, we activate it using its name ```deepweather```:
 ```sh
 $ conda activate deepweather
 ```
-and then we can install additional packages with pip:
+A better option to further install python packages is to use [mamba](https://github.com/mamba-org/mamba), which is a reimplementation of the conda package manager in C++. 
+```
+$ (deepweather) conda install mamba --channel conda-forge
+```
+Now we install the remaining packages using mamba: 
 ```sh
-$ (deepweather) pip install --upgrade tensorflow ecmwf-api-client nbresuse seglearn \
-h2o pymannkendall dask_labextension
+$ (deepweather) mamba install --verbose \
+    scipy pandas statsmodels \
+    scikit-learn scikit-optimize xgboost \
+    matplotlib seaborn plotly cartopy \
+    patchelf jupyterlab ipywidgets qtconsole qtawesome tqdm \
+    dask bottleneck numba cython pyarrow \ 
+    xarray xesmf cmocean cftime nc-time-axis \
+    pygrib cfgrib netCDF4 h5netcdf pseudonetcdf zarr \
+    rioxarray salem regionmask \
+    geopandas folium eofs rasterio pydot 
+```
+and then we can install some pip additional packages:
+```sh
+$ (deepweather) pip install \
+    tensorflow=1.15 \
+    ecmwf-api-client \
+    nbresuse \
+    seglearn \
+    h2o \
+    pymannkendall \
+    dask_labextension
 ```
 
 Let's see the purposes for some of the previously installed packages :
 
 | Package page| Description |
 |:---|:---|
+| [plotly](https://plotly.com/python/getting-started/) | The plotly Python library is an interactive, open-source plotting library that supports over 40 unique chart types covering a wide range of statistical, financial, geographic, scientific, and 3-dimensional use-cases. |
 | [dask](https://dask.org/) | Dask provides advanced parallelism for analytics, enabling performance at scale for the tools you love. |
 | [bottleneck](https://github.com/pydata/bottleneck) | Bottleneck is a collection of fast, NaN-aware NumPy array functions written in C. |
 | [numba](http://numba.pydata.org/) | Numba is an open source JIT compiler that translates a subset of Python and NumPy code into fast machine code. |
